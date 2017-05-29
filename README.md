@@ -56,6 +56,36 @@ Build JAR file
 - `mvn clean`
 - `mvn package`
 
+
+Build and Install on a Raspberryp Pi<br>
+-------------
+Install JDK<br>
+Visit http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html, click the download button of Java Platform (JDK) 8. Click to Accept License Agreement, download jdk-8-linux-arm-vfp-hflt.tar.gz for Linux ARM v6/v7 Hard Float ABI.<br>
+<br>
+Log-in Raspberry Pi, enter the command to extract jdk-8-linux-arm-vfp-hflt.tar.gz to /opt directory.<br>
+- `sudo tar zxvf jdk-8-linux-arm-vfp-hflt.tar.gz -C /opt'
+<br>
+Set default java and javac to the new installed jdk8.<br>
+- `sudo update-alternatives --install /usr/bin/javac javac /opt/jdk1.8.0_131/bin/javac 1'
+- `sudo update-alternatives --install /usr/bin/java java /opt/jdk1.8.0_131/bin/java 1'
+- `sudo update-alternatives --config javac'
+- `sudo update-alternatives --config java'
+<br>
+After all, verify with the commands with -verion option.<br>
+- `java -version'
+- `javac -version'
+How to Install Nukkit<br>
+- `sudo apt-get install -y git'
+- `sudo apt-get install -y maven'
+- `git clone https://github.com/Nukkit/Nukkit.git'
+- `cd Nukkit'
+- `git submodule update --init'
+- `mvn clean'
+- `mvn package'
+To start Nukkit go to target and find the nukkit jar file. You can also create a shell script that can start it.<br>
+- `cd Nukkit/target'>
+- `java -jar nukkit-1.0-SNAPSHOT.jar'
+
 Running
 -------------
 Simply run `start.sh` or `start.cmd`, or execute `java -jar Nukkit.jar`.
